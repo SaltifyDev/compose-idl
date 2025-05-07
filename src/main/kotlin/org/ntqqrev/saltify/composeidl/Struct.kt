@@ -13,6 +13,10 @@ class Struct(val name: String = "struct", block: Struct.() -> Unit) : Type, Desc
         block()
     }
 
+    fun field(field: Field) {
+        _fields.add(field)
+    }
+
     fun field(name: String, type: Type, block: Field.() -> Unit) {
         val field = Field(name, type)
         field.block()
