@@ -6,7 +6,7 @@ import org.ntqqrev.saltify.composeidl.feature.Named
 class Api(override val name: String, block: Api.() -> Unit) : Named, Describable by Describable.Impl() {
     var inputStruct: Struct? = null
         private set
-    var outputStruct: Struct? = null
+    var outputType: Type? = null
         private set
 
     init {
@@ -22,10 +22,19 @@ class Api(override val name: String, block: Api.() -> Unit) : Named, Describable
     }
 
     fun output(block: Struct.() -> Unit) {
-        outputStruct = Struct { block() }
+        outputType = Struct { block() }
     }
 
     fun output(struct: Struct) {
-        outputStruct = struct
+        outputType = struct
+    }
+
+    fun outputArray(elementBlock: Struct.() -> Unit) {
+        val elementStruct = Struct { elementBlock() }
+        outputType = Array(elementStruct)
+    }
+
+    fun outputArray(type: Type) {
+        outputType = Array(type)
     }
 }
