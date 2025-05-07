@@ -9,6 +9,10 @@ class Api(override val name: String, block: Api.() -> Unit) : Named, Describable
     var outputStruct: Struct? = null
         private set
 
+    init {
+        block()
+    }
+
     fun input(block: Struct.() -> Unit) {
         inputStruct = Struct { block() }
     }
