@@ -12,6 +12,12 @@ object IntType : Primitive() {
     override fun toJavaScriptType(): String = "number"
 }
 
+object UIntType : Primitive() {
+    override fun toKotlinType(): String = "Long"
+    override fun toCSharpType(): String = "uint"
+    override fun toJavaScriptType(): String = "number"
+}
+
 object LongType : Primitive() {
     override fun toKotlinType(): String = "Long"
     override fun toCSharpType(): String = "long"
