@@ -8,6 +8,8 @@ class Field(override val name: String, val type: Type) : Named, Describable by D
         private set
     var sample: String? = null
         private set
+    var enum: List<String>? = null
+        private set
     var isOptional: Boolean = false
         private set
 
@@ -17,6 +19,10 @@ class Field(override val name: String, val type: Type) : Named, Describable by D
 
     fun sample(value: String) {
         sample = value
+    }
+
+    fun enum(vararg values: String) {
+        enum = values.toList()
     }
 
     fun optional() {
