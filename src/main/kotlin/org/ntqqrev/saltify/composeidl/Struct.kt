@@ -6,8 +6,6 @@ class Struct(val name: String = "struct", block: Struct.() -> Unit) : Type, Desc
     private val _fields = mutableListOf<Field>()
     val fields: List<Field>
         get() = _fields
-    var documented: Boolean = false
-        private set
 
     init {
         block()
@@ -51,9 +49,5 @@ class Struct(val name: String = "struct", block: Struct.() -> Unit) : Type, Desc
 
     fun use(struct: Struct) {
         _fields.addAll(struct.fields)
-    }
-
-    fun document() {
-        documented = true
     }
 }
