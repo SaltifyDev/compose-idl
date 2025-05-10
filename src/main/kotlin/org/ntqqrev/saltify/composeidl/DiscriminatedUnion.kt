@@ -8,9 +8,9 @@ class DiscriminatedUnion(
     val discriminator: String,
     block: DiscriminatedUnion.() -> Unit
 ) : Type, Named, Describable by Describable.Impl() {
-    private val _structMap: MutableMap<String, Struct> = mutableMapOf()
-    val structMap: Map<String, Struct>
-        get() = _structMap
+    private val _structList: MutableList<Pair<String, Struct>> = mutableListOf()
+    val structList: List<Pair<String, Struct>>
+        get() = _structList
 
     var structInnerKey: String? = null
         private set
@@ -25,15 +25,15 @@ class DiscriminatedUnion(
 
     fun struct(type: String, block: Struct.() -> Unit) {
         val struct = Struct("struct", block)
-        _structMap[type] = struct
+        _structList.add(type to struct)
     }
 
     fun struct(type: String, name: String, block: Struct.() -> Unit) {
         val struct = Struct(name, block)
-        _structMap[type] = struct
+        _structList.add(type to struct)
     }
 
     fun struct(type: String, struct: Struct) {
-        _structMap[type] = struct
+        _structList.add(type to struct)
     }
 }
