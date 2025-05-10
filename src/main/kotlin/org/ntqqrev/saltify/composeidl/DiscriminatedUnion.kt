@@ -4,10 +4,10 @@ import org.ntqqrev.saltify.composeidl.feature.Describable
 import org.ntqqrev.saltify.composeidl.feature.Named
 
 class DiscriminatedUnion(
-    override val name: String,
+    name: String,
     val discriminator: String,
     block: DiscriminatedUnion.() -> Unit
-) : Type, Named, Describable by Describable.Impl() {
+) : Type, Named, Describable, Struct(name, {}) {
     private val _structList: MutableList<Pair<String, Struct>> = mutableListOf()
     val structList: List<Pair<String, Struct>>
         get() = _structList

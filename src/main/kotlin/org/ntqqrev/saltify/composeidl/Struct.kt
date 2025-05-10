@@ -2,7 +2,7 @@ package org.ntqqrev.saltify.composeidl
 
 import org.ntqqrev.saltify.composeidl.feature.Describable
 
-class Struct(val name: String = "struct", block: Struct.() -> Unit) : Type, Describable by Describable.Impl() {
+open class Struct(val name: String = "struct", block: Struct.() -> Unit) : Type, Describable by Describable.Impl() {
     private val _fields = mutableListOf<Field>()
     val fields: List<Field>
         get() = _fields
