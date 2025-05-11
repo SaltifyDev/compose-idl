@@ -42,7 +42,7 @@ open class Struct(val name: String = "struct", block: Struct.() -> Unit) : Type,
 
     fun extend(block: Struct.() -> Unit) : Struct {
         val struct = Struct {}
-        _fields.addAll(struct.fields)
+        struct._fields.addAll(_fields)
         struct.block()
         return struct
     }
