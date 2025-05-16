@@ -13,13 +13,6 @@ object IntType : Primitive() {
     override fun toJavaScriptType(): String = "number"
 }
 
-object UIntType : Primitive() {
-    override fun toString(): String = "uint32"
-    override fun toKotlinType(): String = "Long"
-    override fun toCSharpType(): String = "uint"
-    override fun toJavaScriptType(): String = "number"
-}
-
 object LongType : Primitive() {
     override fun toString(): String = "int64"
     override fun toKotlinType(): String = "Long"
